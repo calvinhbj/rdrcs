@@ -1,0 +1,27 @@
+zh_CN:
+  activerecord:
+    models: #可以不写
+      member: '会员'
+    attributes:
+      member:
+        name: '姓名'
+        age: '年龄'
+        description: '描述'
+        sex: '性别'
+        tel: '联系电话'
+        email: '电子邮箱'
+        saler: '销售员'
+      user:
+        username: '用户名'
+        email: '邮箱地址'
+        password: '密码'
+        signed_out: '退出'
+        signed_in: '登录'
+        remember_me: '记住我'
+        password_confirmation: '确认密码'
+      product:
+        code: '商品编码'
+        name: '商品名称'
+        price: '价格'
+        status: '状态'
+        description: '描述'

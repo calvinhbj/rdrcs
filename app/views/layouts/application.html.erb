@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CN">
   <head>
+  	<title><%=t(:system_title)%></title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -13,7 +14,66 @@
 
   <body>
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+	 <div class="row">
+  <div class="large-12 columns">
+ 
+    <!-- Navigation -->
+      <nav class="top-bar" data-topbar>
+        <ul class="title-area">
+          <!-- Title Area -->
+          <li class="name">
+            <h1>
+            	<%= link_to t(:home), root_path %>
+            </h1>
+          </li>
+          <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+        </ul>
+ 
+        <section class="top-bar-section">
+          <ul class="left">
+            <li><%= link_to t(:member_mgr), members_path %></li>
+            <li><%= link_to t(:product_mgr), products_path %></li>
+            <li><%= link_to t(:order_mgr), members_path %></li>
+            <li><a href="#">...</a></li>
+          </ul>
+        </section>
+      </nav>
+ 
+    <!-- End Navigation -->
+  
+    </div>
+  </div>
+  <br />
+ 
+ 
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="row">
+ 
+    <!-- Content -->
+        <div class="large-12 columns">
+ 		<div class=" clearfix"  >
+			<%= yield %>
+			<%= javascript_include_tag "application" %>
+		</div>
+ </div>
+    <!-- End Content -->
+ 
+      </div>
+    </div>
+  </div>
+ 
+    <!-- Footer -->
+ 
+  <footer class="row">
+    <div class="large-12 columns">
+      <hr>
+      <div class="row">
+        <div class="large-6 columns" >
+          <p>© Copyright no one at all.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
   </body>
 </html>
