@@ -32,25 +32,25 @@
         <section class="top-bar-section">
           <!-- Right Nav Section -->
 				<ul class="right">
-					<li>
-                      <a href="#" style="color: yellow"><%= notice %></a>
-                      <a class="alert" style="color: yellow"><%= alert %></a>
-                    </li>
 
 					<% if user_signed_in? then %>
-					<li  >
+					<li>
+						<%= link_to t(:edit_user_registration),edit_user_registration_path  %>
+					</li>
+					<li>
 						<a href="#">当前用户:<%=current_user.email%></a>
 					</li>
 					<li  >
-						<a href="#"><%= link_to t(:sign_out),destroy_user_session_path , method: :delete%></a>
+						<%= link_to t(:sign_out),destroy_user_session_path , method: :delete%>
 					</li>
 					<% else %>
-					<li><a href="#"><%= link_to t(:sign_in),new_user_session_path  %></a></li>
-					<li><a href="#"><%= link_to t(:sign_up),new_user_registration_path  %></a></li>
+					<li><%= link_to t(:sign_in),new_user_session_path  %></li>
+					<li><%= link_to t(:sign_up),new_user_registration_path  %></li>
 					<% end %>
 				</ul>
 				
           <ul class="left">
+            <li><%= link_to t(:user_mgr), users_path %></li>
             <li><%= link_to t(:member_mgr), members_path %></li>
             <li><%= link_to t(:product_mgr), products_path %></li>
             <li><%= link_to t(:order_mgr), members_path %></li>
@@ -64,7 +64,15 @@
     </div>
   </div>
   <br />
- 
+  
+  <% if notice != nil || alert != nil %>
+  <div class="row">
+  <div data-alert class="alert-box warning round">
+  	<%= notice %><%= alert %>
+  	<a href="#" class="close">&times;</a>
+  </div>
+  </div>
+  <% end %>
  
   <div class="row">
     <div class="large-12 columns">

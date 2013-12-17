@@ -13,6 +13,9 @@ gem 'therubyracer'
 #角色
 gem "rolify"
 
+#权限
+gem 'cancan'
+
 #mysql2 适配器
 gem 'mysql2'
 
