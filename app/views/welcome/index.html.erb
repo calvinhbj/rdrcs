@@ -10,11 +10,14 @@
             	<%=image_tag('/assets/1.jpg',width:"400")%>
             </h5>
  
+ 		  <% if !user_signed_in? then %>
           <div class="show-for-small" align="center">
-            <a href="#" class="small radius button"><%=t(:sign_in)%></a><br>
+            <%= link_to t(:sign_in) ,new_user_session_path , :class => 'small radius button' %>
  
-            <a href="#" class="small radius button"><%=t(:sign_up)%></a>
+            <%= link_to t(:sign_up) , new_user_registration_path , :class => 'small radius button' %>
+ 
           </div>
+          <% end %>
  
           </div>
           <div class="large-6 small-6 columns">
@@ -27,17 +30,14 @@
         </div>
         </div>
  
+ 		  <% if !user_signed_in? then %>
           <div class="large-4 columns hide-for-small">
  
           <h4>登录系统</h4><hr/>
  
-          <a class="large button expand" href="#">
-            <%=t(:sign_in)%>
-          </a>
+            <%= link_to t(:sign_in) ,new_user_session_path , :class => 'large button expand' %>
  
-          <a class="large button expand" href="#">
-            <%=t(:sign_up)%>
-          </a>
- 
+            <%= link_to t(:sign_up) , new_user_registration_path , :class => 'large button expand' %>
  
         </div>
+          <% end %>

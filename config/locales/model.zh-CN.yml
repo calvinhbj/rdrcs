@@ -12,7 +12,7 @@ zh_CN:
         email: '电子邮箱'
         saler: '销售员'
       user:
-        username: '用户名'
+        name: '用户名'
         email: '邮箱地址'
         password: '密码'
         signed_out: '退出'

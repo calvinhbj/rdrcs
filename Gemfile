@@ -1,13 +1,23 @@
-source 'https://rubygems.org'
+# encoding : utf-8
+source 'http://ruby.taobao.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
+#样式库
+gem 'foundation-rails'
+#js库
 gem 'execjs'
 gem 'therubyracer'
-# Use sqlite3 as the database for Active Record
+
+#角色
+gem "rolify"
+
+#mysql2 适配器
 gem 'mysql2'
-gem 'foundation-rails'
+
+# 引入权限管理插件
+gem 'devise'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
