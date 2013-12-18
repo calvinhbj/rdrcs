@@ -39,5 +39,38 @@
  
             <%= link_to t(:sign_up) , new_user_registration_path , :class => 'large button expand' %>
  
-        </div>
+        	</div>
+          <% else %>
+          	<% if current_user.has_role? :r_member, current_user then %>
+				<% if @has_init_member_info then %>
+					<div class="large-4 columns">
+						<table>
+							<tr>
+								<th>会员名称</th>
+								<td><%= @member.name%></td>
+							</tr>
+							<tr>
+								<th>会员性别</th>
+								<td><%= @member.sex%></td>
+							</tr>
+							<tr>
+								<th>邮箱</th>
+								<td><%= @member.email%></td>
+							</tr>
+							<tr>
+								<th>联系电话</th>
+								<td><%= @member.tel%></td>
+							</tr>
+						</table>
+					</div>
+				<% else %>
+					<div class="large-4 columns">
+					<div data-alert class="alert-box warning radius">
+					  会员信息还没初始化
+					  <a href="#" class="close">&times;</a>
+					</div>
+					<%= link_to '初始化信息' ,new_member_path , :class => 'button  radius round' %>
+					</div>
+				<% end %>
+          	<% end %>
           <% end %>

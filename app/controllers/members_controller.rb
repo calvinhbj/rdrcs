@@ -26,7 +26,8 @@ class MembersController < ApplicationController
   # POST /members.json
   def create
     @member = Member.new(member_params)
-
+    #设置关联用户档案 信息
+    @member.user_id = current_user.id
     respond_to do |format|
       if @member.save
         format.html { redirect_to @member, notice: 'Member was successfully created.' }

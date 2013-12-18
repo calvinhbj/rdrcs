@@ -1,11 +1,10 @@
 class ProductsController < ApplicationController
   before_filter :authenticate_user!
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.accessible_by(current_ability)
   end
 
   # GET /products/1
@@ -27,6 +26,8 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
+    @product.user_id = current_user.id
+    
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

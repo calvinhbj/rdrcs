@@ -48,7 +48,8 @@
 					<li><%= link_to t(:sign_up),new_user_registration_path  %></li>
 					<% end %>
 				</ul>
-				
+		<%if current_user != nil %>
+		<% if !current_user.role_names.include? 'r_member' %>
           <ul class="left">
             <li><%= link_to t(:user_mgr), users_path %></li>
             <li><%= link_to t(:member_mgr), members_path %></li>
@@ -56,6 +57,8 @@
             <li><%= link_to t(:order_mgr), members_path %></li>
             <li><a href="#">...</a></li>
           </ul>
+        <% end %>
+        <% end %>
         </section>
       </nav>
  

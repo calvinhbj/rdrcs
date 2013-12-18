@@ -26,6 +26,26 @@ class MyRegistrationsController < Devise::RegistrationsController
       respond_with resource
     end
   end
+  
+  def add
+    build_resource(sign_up_params)
+
+    if resource.save
+      roles = params.require(:roles)
+      roles.each{|rolename| 
+            resource.add_role rolename , resource
+      }
+      if resource.save
+        respond_with resource , :location => users_url , :notice => "add success"
+        #format.html { redirect_to users_url , notice: 'User was successfully updated.' }
+        #format.json { head :no_content }
+      else
+        respond_with resource , :location => users_url
+      end
+    else
+        respond_with resource , :location => users_url
+    end
+  end
 
 
   # PUT /resource

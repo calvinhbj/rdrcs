@@ -1,7 +1,16 @@
 Rdrcs::Application.routes.draw do
   
-  devise_for :users
+  devise_for :users , 
+             :controllers => {
+                :registrations => 'my_registrations'
+             }
+  devise_scope :user do 
+    post 'user_add' => 'my_registrations#add'
+  end
+  
   resources :users
+  
+  
   resources :products
 
   resources :members

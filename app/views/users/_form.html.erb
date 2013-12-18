@@ -1,4 +1,8 @@
-<%= form_for(@user) do |f| %>
+<% formurl = 
+	if @user.id == nil
+		then user_add_path
+	else user_path end %>
+<%= form_for(@user,url: formurl ) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -26,6 +30,13 @@
   	<%= label_tag role[:id] ,role[:text] , :class => 'success label'%>
   <% end %>
   </div>
+  <% if @user.blank? %>
+  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+  <%= f.password_field :password, :autocomplete => "off" %></div>
+
+  <div><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></div>
+  <% end %>
   <div class="actions">
     <%= f.submit t(:submit),:class => 'button tiny radius round alert' %>
   </div>
