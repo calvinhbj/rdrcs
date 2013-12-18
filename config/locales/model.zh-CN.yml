@@ -21,9 +21,22 @@ zh_CN:
         password_confirmation: '确认密码'
         current_password: '当前密码'
         sign_in_count: '登录次数'
+        role: '角色'
       product:
         code: '商品编码'
         name: '商品名称'
         price: '价格'
         status: '状态'
         description: '描述'
+      order:
+        code: '订单编码'
+        mb_id: '会员'
+        pd_id: '商品'
+        order_status: '销售状态'
+        price: '价格'
+        pay_type: '支付方式'
+        pay_status: '支付状态'
+        service_status: '服务状态'
+        description: '描述'
+        
+        

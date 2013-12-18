@@ -6,6 +6,7 @@ zh_CN:
   member_mgr: '会员管理'
   product_mgr: '商品管理'
   order_mgr: '订单管理'
+  order: '订单'
   member: '会员'
   member_list: '会员列表'
   product: '商品'

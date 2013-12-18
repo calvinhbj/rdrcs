@@ -4,7 +4,8 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.accessible_by(current_ability)
+     @products = Product.all
+    #@products = Product.accessible_by(current_ability)
   end
 
   # GET /products/1

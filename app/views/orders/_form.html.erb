@@ -1,0 +1,53 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :mb_id %><br>
+    <%= select("order", "mb_id", @member_list.collect{|t| [t[:email], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :pd_id %><br>
+    <%= select("order", "pd_id", @product_list.collect{|t| [t[:name], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :order_status %><br>
+    <%= select("order", "order_status", type_list(:order_status).collect{|t| [t[:text], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_type %><br>
+    <%= select("order", "pay_type", type_list(:pay_type).collect{|t| [t[:text], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :pay_status %><br>
+    <%= select("order", "pay_status", type_list(:pay_status).collect{|t| [t[:text], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :service_status %><br>
+    <%= select("order", "service_status", type_list(:service_status).collect{|t| [t[:text], t[:id]] },  options ={:prompt => "请选择"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

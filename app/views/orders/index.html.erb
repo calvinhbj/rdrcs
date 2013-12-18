@@ -1,0 +1,43 @@
+<h1>订单列表</h1>
+
+<table style="width: 100%">
+  <thead>
+    <tr>
+      <th><%= Order.human_attribute_name :code %></th>
+      <th><%= Order.human_attribute_name :mb_id %></th>
+      <th><%= Order.human_attribute_name :pd_id %></th>
+      <th><%= Order.human_attribute_name :order_status%></th>
+      <th><%= Order.human_attribute_name :price %></th>
+      <th><%= Order.human_attribute_name :pay_status %></th>
+      <th><%= Order.human_attribute_name :pay_status %></th>
+      <th><%= Order.human_attribute_name :service_status %></th>
+      <th><%= Order.human_attribute_name :description %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.code %></td>
+        <td><%= order.user.name %></td>
+        <td><%= order.product.name %></td>
+        <td><%= type_decode(:order_status,order.order_status) %></td>
+        <td><%= order.price %></td>
+        <td><%= type_decode(:pay_type,order.pay_type ) %></td>
+        <td><%= type_decode(:pay_status,order.pay_status) %></td>
+        <td><%= type_decode(:service_status,order.service_status ) %></td>
+        <td><%= order.description %></td>
+        <td><%= link_to t(:show), order %></td>
+        <td><%= if can? :update,Order then link_to t(:edit), edit_order_path(order) end %></td>
+        <td><%= if can? :update,Order then link_to t(:delete), order, method: :delete, data: { confirm: 'Are you sure?' } end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

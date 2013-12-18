@@ -38,7 +38,7 @@
 						<%= link_to t(:edit_user_registration),edit_user_registration_path  %>
 					</li>
 					<li>
-						<a href="#">当前用户:<%=current_user.email%></a>
+						<a href="#">当前用户:<span style="font-weight: bold;color: yellow; "><%=current_user.name%></span>【<%=current_user.email%>】</a>
 					</li>
 					<li  >
 						<%= link_to t(:sign_out),destroy_user_session_path , method: :delete%>
@@ -51,11 +51,18 @@
 		<%if current_user != nil %>
 		<% if !current_user.role_names.include? 'r_member' %>
           <ul class="left">
+            <% if current_user.has_role? :r_admin,current_user %>
             <li><%= link_to t(:user_mgr), users_path %></li>
+            <% end%>
             <li><%= link_to t(:member_mgr), members_path %></li>
+            <% if current_user.has_role? :r_sale_host,current_user %>
             <li><%= link_to t(:product_mgr), products_path %></li>
-            <li><%= link_to t(:order_mgr), members_path %></li>
-            <li><a href="#">...</a></li>
+            <% end%>
+            <li><%= link_to t(:order_mgr), orders_path %></li>
+          </ul>
+        <% else %>
+          <ul class="left">
+            <li><%= link_to '我的订单', orders_path %></li>
           </ul>
         <% end %>
         <% end %>

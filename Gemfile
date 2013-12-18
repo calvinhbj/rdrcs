@@ -16,6 +16,9 @@ gem "rolify"
 #权限
 gem 'cancan'
 
+#状态机
+gem 'state_machine', :require => 'state_machine/core'
+
 #mysql2 适配器
 gem 'mysql2'
 

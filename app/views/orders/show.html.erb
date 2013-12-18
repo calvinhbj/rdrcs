@@ -1,0 +1,47 @@
+<p>
+  <strong><%= Order.human_attribute_name :code %>:</strong>
+  <%= @order.code %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :mb_id %>:</strong>
+  <%= @order.user.name %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :pd_id %>:</strong>
+  <%= @order.product.name %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :order_status%>:</strong>
+  <%= type_decode(:order_status,@order.order_status ) %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :price %>:</strong>
+  <%= @order.price %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :pay_type %>:</strong>
+  <%= type_decode(:pay_type,@order.pay_type ) %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :pay_status %> :</strong>
+  <%= type_decode(:pay_status,@order.pay_status ) %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :service_status %>:</strong>
+  <%= type_decode(:service_status,@order.service_status ) %>
+</p>
+
+<p>
+  <strong><%= Order.human_attribute_name :description %>:</strong>
+  <%= @order.description %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

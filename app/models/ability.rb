@@ -8,17 +8,17 @@ class Ability
     if user.has_role? :r_admin, user
       can :manage, :all
     elsif user.has_role? :r_sale_host, user
+      can :read, Order
       
     elsif user.has_role? :r_sale, user 
       can :read, Product , :user_id => user.id
-      can :show, Product , :user_id => user.id
-      can :update, Product , :user_id => user.id
-      can :create, Product , :user_id => user.id
       
+      can :read, Order , :user_id => user.id
+      can :update, Order 
     elsif user.has_role? :r_client, user
-      
+      can :read, Order
     elsif user.has_role? :r_member, user
-      
+      can :read, Order ,:mb_id => user.id
     end
     
     # Define abilities for the passed in user here. For example:

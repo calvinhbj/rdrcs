@@ -30,7 +30,7 @@
   	<%= label_tag role[:id] ,role[:text] , :class => 'success label'%>
   <% end %>
   </div>
-  <% if @user.blank? %>
+  <% if @user.id.blank? %>
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 

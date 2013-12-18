@@ -1,5 +1,7 @@
 Rdrcs::Application.routes.draw do
   
+  resources :orders
+
   devise_for :users , 
              :controllers => {
                 :registrations => 'my_registrations'

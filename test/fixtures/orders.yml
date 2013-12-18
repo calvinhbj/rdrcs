@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  mb_id: 1
+  pd_id: 1
+  order_status: 1
+  price: 1.5
+  pay_type: 1
+  pay_status: 1
+  service_status: 1
+  description: MyText
+
+two:
+  code: MyString
+  mb_id: 1
+  pd_id: 1
+  order_status: 1
+  price: 1.5
+  pay_type: 1
+  pay_status: 1
+  service_status: 1
+  description: MyText
