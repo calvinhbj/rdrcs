@@ -1,5 +1,6 @@
+# encoding = utf-8
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [ :handle, :view, :show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json
@@ -10,8 +11,8 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
-    @member_list = User.find_by_sql(" select u.* from users_roles  ur left join roles r on ur.role_id = r.id left join users u on ur.user_id = u.id where r.name = 'r_member'")
-    @product_list = Product.where(:status => 1)
+    #@member_list = User.find_by_sql(" select u.* from users_roles  ur left join roles r on ur.role_id = r.id left join users u on ur.user_id = u.id where r.name = 'r_member'")
+   # @product_list = Product.where(:status => 1)
   end
 
   # GET /orders/new
@@ -26,6 +27,22 @@ class OrdersController < ApplicationController
     @member_list = User.find_by_sql(" select u.* from users_roles  ur left join roles r on ur.role_id = r.id left join users u on ur.user_id = u.id where r.name = 'r_member'")
     @product_list = Product.where(:status => 1)
   end
+  
+  
+  def handle
+    event = params.require(:event)
+    if event == 'submit' then
+      @order.submit
+    elsif event == 'agree'
+      @order.agree
+    elsif event == 'disagree'
+      @order.disagree
+    end
+    respond_to do |format|
+        format.html { redirect_to @order, notice: '处理完成' }
+    end
+  end
+  
 
   # POST /orders
   # POST /orders.json
@@ -75,6 +92,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:code, :mb_id, :pd_id, :order_status, :price, :pay_type, :pay_status, :service_status, :description)
+      params.require(:order).permit(:code, :mb_id, :pd_id, :order_status, :price, :pay_type, :pay_status, :service_status, :description,:fstate)
     end
 end

@@ -38,5 +38,7 @@ zh_CN:
         pay_status: '支付状态'
         service_status: '服务状态'
         description: '描述'
+        fstate: '流程状态'
+        comment: '意见'
         
         

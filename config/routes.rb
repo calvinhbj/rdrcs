@@ -1,6 +1,9 @@
 Rdrcs::Application.routes.draw do
   
   resources :orders
+  
+  get 'order_view' => 'orders#view'
+  get 'order_handle' => 'orders#handle'
 
   devise_for :users , 
              :controllers => {

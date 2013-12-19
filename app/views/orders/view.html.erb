@@ -1,6 +1,6 @@
 <p>
   <strong><%= Order.human_attribute_name :fstate %>:</strong>
-  <%= type_decode(:fstate,@order.fstate) %>
+  <span style="color: red"><%= type_decode(:fstate,@order.fstate) %></span>
 </p>
 <p>
   <strong><%= Order.human_attribute_name :code %>:</strong>
@@ -48,4 +48,7 @@
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back', orders_path %>|
+<%= link_to '提交审核', order_handle_path(:id => @order.id,:event => 'submit') %>|
+<%= link_to '同意', order_handle_path(:id => @order.id,:event => 'agree') %>|
+<%= link_to '不同意', order_handle_path(:id => @order.id,:event => 'disagree') %>

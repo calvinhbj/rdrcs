@@ -20,8 +20,12 @@ module OrdersHelper
     :service_status =>
     [{:id => 1,:text => '未处理'},
       {:id => 2,:text => '物流处理中'},
-      {:id => 3,:text => '已提供'}]
-      
+      {:id => 3,:text => '已提供'}],
+    :fstate => 
+    [{:id => 'draft',:text => '草稿'},
+      {:id => 'waiting',:text => '等待处理'},
+      {:id => 'validate',:text => '审核通过'},
+      {:id => 'return',:text => '退回'}]
    }
 
   def type_list name
