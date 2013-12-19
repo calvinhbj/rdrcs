@@ -25,6 +25,9 @@ gem 'mysql2'
 # 引入权限管理插件
 gem 'devise'
 
+gem 'ruby-graphviz'
+
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

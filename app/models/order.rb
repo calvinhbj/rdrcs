@@ -20,4 +20,10 @@ class Order < ActiveRecord::Base
       transition :return => :waiting
     end
   end
+  
+  def showImg  
+                options={}  
+                options[:format]='jpg'  
+                StateMachine::Machine.draw(Order.to_s, options)  
+  end
 end

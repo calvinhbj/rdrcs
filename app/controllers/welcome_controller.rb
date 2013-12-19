@@ -18,6 +18,8 @@ class WelcomeController < ApplicationController
         else
           @has_init_member_info = false
         end
+      elsif current_user.has_role? :r_sale_host,current_user
+         @handle_list = Order.where(:fstate => 'waiting')
       end
     end
   end
