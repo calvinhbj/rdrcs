@@ -48,11 +48,30 @@
   <%= @order.description %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>|
-<%= link_to '提交审核', order_handle_path(:id => @order.id,:event => 'submit') %>|
-<%= link_to '同意', order_handle_path(:id => @order.id,:event => 'agree') %>|
-<%= link_to '不同意', order_handle_path(:id => @order.id,:event => 'disagree') %>
+<p>
+  <strong>审核历史:</strong>
+  <br />
+  <%= @order.comment.html_safe %>
+</p>
+
+<div class="field">
+    <strong><%= Order.human_attribute_name :comment %>:</strong>
+    <textarea id="comment"></textarea>
+</div>
+
+
+
+<%= link_to t(:edit), edit_order_path(@order) %> |
+<%= link_to t(:back), orders_path %>|
+
+<%= if (current_user.has_role? :r_sale,current_user)
+		link_to '提交审核', order_handle_path(:id => @order.id,:event => 'submit')
+	end
+%>|
+<% if (current_user.has_role? :r_sale_host ,current_user) %> 
+<%= link_to '同意', order_handle_path(:id => @order.id,:event => 'agree'),:onclick => 'this.href = this.href+"&comment="+document.getElementById("comment").value' %>|
+<%= link_to '不同意', order_handle_path(:id => @order.id,:event => 'disagree'),:onclick => 'this.href = this.href+"&comment="+document.getElementById("comment").value' %>
+<% end %>
 </div>
 <div class="large-4 columns">
 <%=image_tag('/assets/Order_fstate.jpg',width:"200")%>

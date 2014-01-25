@@ -4,8 +4,12 @@ source 'http://ruby.taobao.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
 
+# oauth2工具
+gem 'doorkeeper', '~> 0.7.0'
+
 #样式库
 gem 'foundation-rails'
+
 #js库
 gem 'execjs'
 gem 'therubyracer'
@@ -27,6 +31,11 @@ gem 'devise'
 
 gem 'ruby-graphviz'
 
+#任务队列
+#gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+
+#内存数据库
+gem 'redis'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -37,6 +46,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 
+gem 'paper_trail'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -48,6 +58,8 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
+
+#gem 'blorgh', :path => "../blorgh"
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

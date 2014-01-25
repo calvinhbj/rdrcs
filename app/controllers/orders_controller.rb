@@ -1,4 +1,4 @@
-# encoding = utf-8
+# encoding : utf-8
 class OrdersController < ApplicationController
   before_action :set_order, only: [ :handle, :view, :show, :edit, :update, :destroy]
 
@@ -31,15 +31,35 @@ class OrdersController < ApplicationController
   
   def handle
     event = params.require(:event)
-    if event == 'submit' then
-      @order.submit
-    elsif event == 'agree'
-      @order.agree
-    elsif event == 'disagree'
-      @order.disagree
+    
+    p params[:comment]
+    
+    comment = params[:comment]?params[:comment]:""
+    p comment
+    
+    if !comment.blank? 
+      p comment = "<br />[" + Time.now.strftime("%Y-%m-%d %H:%M") + "]" + current_user.name + "[审核意见] <br />" + comment+"<br/>"
+      p "========================"
+      p @order.comment = @order.comment ? @order.comment + comment : comment
+      p "========================"
     end
-    respond_to do |format|
-        format.html { redirect_to @order, notice: '处理完成' }
+
+    
+    if @order.save
+      if event == 'submit' then
+        @order.submit
+      elsif event == 'agree'
+        @order.agree
+      elsif event == 'disagree'
+        @order.disagree
+      end
+      respond_to do |format|
+          format.html { redirect_to @order, notice: '处理完成' }
+      end
+    else
+      respond_to do |format|
+          format.html { redirect_to @order, notice: '处理异常' }
+      end
     end
   end
   

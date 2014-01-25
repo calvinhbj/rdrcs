@@ -1,5 +1,6 @@
 Rdrcs::Application.routes.draw do
   
+  use_doorkeeper
   resources :orders
   
   get 'order_view' => 'orders#view'
@@ -21,6 +22,8 @@ Rdrcs::Application.routes.draw do
   resources :members
 
   root :to => "welcome#index"
+
+  #mount Blorgh::Engine ,:at => "/blorgh"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
